@@ -1,14 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import { evaluate } from "mathjs";
 import "./Calculator.css";
 
 const Calculator = () => {
+  const [input, setInput] = useState("");
+
+  const handleClick = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleBtnClick = (e) => {
+    setInput(`${input + e.target.value}`);
+  };
+
+  const calculate = () => {
+    try {
+      const result = evaluate(input);
+      setInput(result.toString());
+    } catch (err) {
+      const message = `⚠️ Error: ${err.message}`;
+      setInput(message);
+    }
+  };
+
   return (
     <div className="calculator">
-      <input type="text" className="display" readOnly />
+      <input
+        type="text"
+        className="display"
+        value={input}
+        onChange={handleClick}
+      />
 
       <div className="keypad">
         <div className="row">
-          <button className="special">(</button>
+          <button value={"("} onClick={handleBtnClick} className="special">
+            (
+          </button>
           <button className="special">)</button>
           <button className="special">%</button>
           <button className="high">C</button>
@@ -54,7 +82,9 @@ const Calculator = () => {
           <button className="number">.</button>
           <button className="special">×10^x</button>
           <button className="special">Ans</button>
-          <button className="high">=</button>
+          <button onClick={calculate} className="high">
+            =
+          </button>
         </div>
       </div>
     </div>
