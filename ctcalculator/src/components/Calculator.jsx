@@ -21,21 +21,26 @@ const Calculator = () => {
     return () => window.removeEventListener("click", keepFocus);
   }, []);
 
-  const handleClick = (e) => {
+  const handleInputChange = (e) => {
+    const newValue = e.target.value;
+
     if (justEvaluated) {
-      setInput("");
+      // Get only the newly typed character
+      const latestChar = newValue.slice(-1);
+      setInput(latestChar); // Start fresh with only that character
       setJustEvaluated(false);
     } else {
-      setInput(e.target.value);
+      setInput(newValue); // Normal typing
     }
   };
 
   const handleBtnClick = (e) => {
+    const value = e.target.value;
     if (justEvaluated) {
-      setInput("");
+      setInput(value);
       setJustEvaluated(false);
     } else {
-      setInput(`${input + e.target.value}`);
+      setInput((prev) => prev + value);
     }
   };
 
@@ -77,6 +82,14 @@ const Calculator = () => {
     }
   };
 
+    const handleKeyDown = (e) => {
+    if (e.key === "Enter"){
+        calculate()
+    } else if (e.altKey && e.key.toLowerCase() === "c") {
+        clear()
+    }
+  }
+
   return (
     <div className="calculator">
       <input
@@ -84,7 +97,8 @@ const Calculator = () => {
         ref={inputRef}
         className="display"
         value={input}
-        onChange={handleClick}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
       />
 
       <div className="keypad">
@@ -155,8 +169,8 @@ const Calculator = () => {
           <button value="×" onClick={handleBtnClick} className="special">
             ×
           </button>
-          <button value="/" onClick={handleBtnClick} className="special">
-            /
+          <button value="÷" onClick={handleBtnClick} className="special">
+            ÷
           </button>
         </div>
 
