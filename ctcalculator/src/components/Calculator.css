@@ -25,6 +25,11 @@
   background-color: var(--primary-color);
 }
 
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .keypad {
   margin-top: 15px;
   margin-bottom: 15px;
@@ -44,8 +49,8 @@
 
 button {
   flex: 1;
-  width: 55px;
-  height: 55px;
+  width: 57.7px;
+  height: 57.5px;
   border: none;
   outline: none;
   border-radius: 8px;
