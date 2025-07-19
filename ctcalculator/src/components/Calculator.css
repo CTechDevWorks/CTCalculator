@@ -24,6 +24,7 @@
   box-sizing: border-box;
   background-color: var(--primary-color);
   color: var(--light-color);
+  letter-spacing: 0.75px;
 }
 
 input:focus {

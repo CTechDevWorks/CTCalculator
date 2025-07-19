@@ -1,25 +1,79 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { evaluate } from "mathjs";
 import "./Calculator.css";
 
 const Calculator = () => {
   const [input, setInput] = useState("");
+  const [ans, setAns] = useState("");
+  const [justEvaluated, setJustEvaluated] = useState(false);
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    const keepFocus = () => inputRef.current?.focus();
+
+    // Focus once on mount
+    keepFocus();
+
+    // Re-focus whenever user clicks outside and returns
+    window.addEventListener("click", keepFocus);
+
+    return () => window.removeEventListener("click", keepFocus);
+  }, []);
 
   const handleClick = (e) => {
-    setInput(e.target.value);
+    if (justEvaluated) {
+      setInput("");
+      setJustEvaluated(false);
+    } else {
+      setInput(e.target.value);
+    }
   };
 
   const handleBtnClick = (e) => {
-    setInput(`${input + e.target.value}`);
+    if (justEvaluated) {
+      setInput("");
+      setJustEvaluated(false);
+    } else {
+      setInput(`${input + e.target.value}`);
+    }
+  };
+
+  const formatInput = (text) => {
+    return text
+      .replace(/π/g, "pi")
+      .replace(/√/g, "sqrt(")
+      .replace(/×/g, "*")
+      .replace(/÷/g, "/")
+      .replace(/Ans/g, ans);
   };
 
   const calculate = () => {
     try {
-      const result = evaluate(input);
+      const format = formatInput(input);
+      const result = evaluate(format);
       setInput(result.toString());
+      setAns(result.toString());
+      setJustEvaluated(true);
     } catch (err) {
       const message = `⚠️ Error: ${err.message}`;
       setInput(message);
+      setJustEvaluated(true);
+    }
+  };
+
+  const clear = () => {
+    setInput("");
+  };
+
+  const backspace = () => {
+    if (input.startsWith("⚠️ Error")) {
+      setInput("");
+    } else if (justEvaluated) {
+      setInput("");
+      setJustEvaluated(false);
+    } else {
+      setInput(input.slice(0, -1));
     }
   };
 
@@ -27,6 +81,7 @@ const Calculator = () => {
     <div className="calculator">
       <input
         type="text"
+        ref={inputRef}
         className="display"
         value={input}
         onChange={handleClick}
@@ -34,54 +89,113 @@ const Calculator = () => {
 
       <div className="keypad">
         <div className="row">
-          <button value={"("} onClick={handleBtnClick} className="special">
+          <button value="(" onClick={handleBtnClick} className="special">
             (
           </button>
-          <button className="special">)</button>
-          <button className="special">%</button>
-          <button className="high">C</button>
-          <button className="high">⌫</button>
+          <button value=")" onClick={handleBtnClick} className="special">
+            )
+          </button>
+          <button value="%" onClick={handleBtnClick} className="special">
+            %
+          </button>
+          <button onClick={clear} className="high">
+            C
+          </button>
+          <button onClick={backspace} className="high">
+            ⌫
+          </button>
         </div>
 
         <div className="row">
-          <button className="special">sin</button>
-          <button className="special">cos</button>
-          <button className="special">tan</button>
-          <button className="special">log</button>
-          <button className="special">π</button>
+          <button value="sin(" onClick={handleBtnClick} className="special">
+            sin
+          </button>
+          <button value="cos(" onClick={handleBtnClick} className="special">
+            cos
+          </button>
+          <button value="tan(" onClick={handleBtnClick} className="special">
+            tan
+          </button>
+          <button value="log(" onClick={handleBtnClick} className="special">
+            log
+          </button>
+          <button value="π" onClick={handleBtnClick} className="special">
+            π
+          </button>
         </div>
 
         <div className="row">
-          <button className="number">7</button>
-          <button className="number">8</button>
-          <button className="number">9</button>
-          <button className="special">^</button>
-          <button className="special">√</button>
+          <button value="7" onClick={handleBtnClick} className="number">
+            7
+          </button>
+          <button value="8" onClick={handleBtnClick} className="number">
+            8
+          </button>
+          <button value="9" onClick={handleBtnClick} className="number">
+            9
+          </button>
+          <button value="^" onClick={handleBtnClick} className="special">
+            ^
+          </button>
+          <button value="√(" onClick={handleBtnClick} className="special">
+            √
+          </button>
         </div>
 
         <div className="row">
-          <button className="number">4</button>
-          <button className="number">5</button>
-          <button className="number">6</button>
-          <button className="special">*</button>
-          <button className="special">/</button>
+          <button value="4" onClick={handleBtnClick} className="number">
+            4
+          </button>
+          <button value="5" onClick={handleBtnClick} className="number">
+            5
+          </button>
+          <button value="6" onClick={handleBtnClick} className="number">
+            6
+          </button>
+          <button value="×" onClick={handleBtnClick} className="special">
+            ×
+          </button>
+          <button value="/" onClick={handleBtnClick} className="special">
+            /
+          </button>
         </div>
 
         <div className="row">
-          <button className="number">1</button>
-          <button className="number">2</button>
-          <button className="number">3</button>
-          <button className="special">+</button>
-          <button className="special" id="minus">
+          <button value="1" onClick={handleBtnClick} className="number">
+            1
+          </button>
+          <button value="2" onClick={handleBtnClick} className="number">
+            2
+          </button>
+          <button value="3" onClick={handleBtnClick} className="number">
+            3
+          </button>
+          <button value="+" onClick={handleBtnClick} className="special">
+            +
+          </button>
+          <button
+            value="-"
+            onClick={handleBtnClick}
+            className="special"
+            id="minus"
+          >
             -
           </button>
         </div>
 
         <div className="row">
-          <button className="number">0</button>
-          <button className="number">.</button>
-          <button className="special">×10^x</button>
-          <button className="special">Ans</button>
+          <button value="0" onClick={handleBtnClick} className="number">
+            0
+          </button>
+          <button value="." onClick={handleBtnClick} className="number">
+            .
+          </button>
+          <button value="×10^" onClick={handleBtnClick} className="special">
+            ×10^x
+          </button>
+          <button value="Ans" onClick={handleBtnClick} className="special">
+            Ans
+          </button>
           <button onClick={calculate} className="high">
             =
           </button>
