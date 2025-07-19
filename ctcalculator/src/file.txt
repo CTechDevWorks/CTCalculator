@@ -1,0 +1,21 @@
+//   const [result, setResult] = useState("");
+
+//   const handleClick = (e) => {
+//     setResult(result.concat(e.target.name));
+//   };
+
+//   const clear = () => {
+//     setResult("");
+//   };
+
+//   const backspace = () => {
+//     setResult(result.slice(0, -1));
+//   };
+
+//   const calculate = () => {
+//     try {
+//       setResult(eval(result).toString());
+//     } catch (err) {
+//       setResult("Error");
+//     }
+//   };
