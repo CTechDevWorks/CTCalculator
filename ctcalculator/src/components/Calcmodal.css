@@ -1,7 +1,7 @@
-.modal{
-    max-height: 100dvh;
-    scrollbar-color: blue;
-    overflow: auto;
+.modal {
+  max-height: 100dvh;
+  scrollbar-color: blue;
+  overflow: auto;
 }
 
 .modal-content {
@@ -10,7 +10,7 @@
   border-radius: 12px;
   padding: 20px;
   border: 2px solid var(--tertiary-color);
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .modal-header {
@@ -51,19 +51,20 @@
 }
 
 button.btn {
-  background-color: var(--accent-color);
+  background-color: var(--tertiary-color);
   border: none;
-  color: #000;
+  font-size: 20px;
+  color: var(--light-color);
   font-weight: bold;
   padding: 8px 16px;
   border-radius: 8px;
-  transition: background-color 0.3s ease;
+  transition: var(--transition);
 }
 
 button.btn:hover {
-  background-color: #e69100;
+  font-size: 24px;
 }
 
-code{
-    color: var(--tertiary-color);
+code {
+  color: var(--tertiary-color);
 }
