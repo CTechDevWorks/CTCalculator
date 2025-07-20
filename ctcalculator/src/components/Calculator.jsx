@@ -12,7 +12,7 @@ const Calculator = () => {
   const inputRef = useRef(null);
 
   useEffect(() => {
-    setModalShow(true)
+    setModalShow(true);
     const keepFocus = () => inputRef.current?.focus();
 
     // Focus once on mount
@@ -92,6 +92,7 @@ const Calculator = () => {
       e.preventDefault();
       clear();
     } else if (e.key === "Backspace") {
+      e.preventDefault();
       backspace();
     }
   };
@@ -197,12 +198,7 @@ const Calculator = () => {
             <button value="+" onClick={handleBtnClick} className="special">
               +
             </button>
-            <button
-              value="-"
-              onClick={handleBtnClick}
-              className="special"
-              id="minus"
-            >
+            <button value="-" onClick={handleBtnClick} className="special">
               -
             </button>
           </div>
