@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap");
-
-* {
-  font-family: "Open Sans", sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,600&display=swap');
 
 :root {
   --primary-color: #060A25;
@@ -11,4 +8,7 @@
   --accent-color: #FFA104;
   --light-color: #f5f5f5;
   --dark-color: #191919;
+
+  --button-font: "Open Sans", sans-serif;
+  --input-font: "TikTok Sans", sans-serif;
 }
