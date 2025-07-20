@@ -82,13 +82,14 @@ const Calculator = () => {
     }
   };
 
-    const handleKeyDown = (e) => {
-    if (e.key === "Enter"){
-        calculate()
-    } else if (e.altKey && e.key.toLowerCase() === "c") {
-        clear()
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      calculate();
+    } else if (e.shiftKey && e.key.toLowerCase() === "c") {
+      e.preventDefault();
+      clear();
     }
-  }
+  };
 
   return (
     <div className="calculator">
