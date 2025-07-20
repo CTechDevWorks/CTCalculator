@@ -1,14 +1,17 @@
-import React from 'react'
-import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Calculator from './components/Calculator'
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import Calculator from "./components/Calculator";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <Calculator />
+      <Router>
+        <Calculator />
+      </Router>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

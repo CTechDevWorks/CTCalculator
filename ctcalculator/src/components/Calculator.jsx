@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { evaluate } from "mathjs";
 import Calcmodal from "./Calcmodal";
 import "./Calculator.css";
@@ -100,9 +101,18 @@ const Calculator = () => {
   return (
     <div className="no-bootstrap">
       <div className="info">
-        <p onClick={() => setModalShow(true)} >🧮</p>
+        <p onClick={() => setModalShow(true)}>🧮</p>
       </div>
       <div className="calculator">
+        <div className="extra">
+          <p className="title">CTCalculator</p>
+          <p className="link-up">
+            Made by
+            <Link target="blank" to={"https://github.com/CTechDevWorks"}>
+              <span>C</span>TDW_
+            </Link>
+          </p>
+        </div>
         <input
           type="text"
           ref={inputRef}
@@ -113,118 +123,106 @@ const Calculator = () => {
         />
 
         <div className="keypad">
-          <div className="row">
-            <button value="(" onClick={handleBtnClick} className="special">
-              (
-            </button>
-            <button value=")" onClick={handleBtnClick} className="special">
-              )
-            </button>
-            <button value="%" onClick={handleBtnClick} className="special">
-              %
-            </button>
-            <button onClick={clear} className="high">
-              C
-            </button>
-            <button onClick={backspace} className="high">
-              ⌫
-            </button>
-          </div>
+          <button value="(" onClick={handleBtnClick} className="special">
+            (
+          </button>
+          <button value=")" onClick={handleBtnClick} className="special">
+            )
+          </button>
+          <button value="%" onClick={handleBtnClick} className="special">
+            %
+          </button>
+          <button onClick={clear} className="high">
+            C
+          </button>
+          <button onClick={backspace} className="high">
+            ⌫
+          </button>
 
-          <div className="row">
-            <button value="sin(" onClick={handleBtnClick} className="special">
-              sin
-            </button>
-            <button value="cos(" onClick={handleBtnClick} className="special">
-              cos
-            </button>
-            <button value="tan(" onClick={handleBtnClick} className="special">
-              tan
-            </button>
-            <button value="log(" onClick={handleBtnClick} className="special">
-              log
-            </button>
-            <button value="π" onClick={handleBtnClick} className="special">
-              π
-            </button>
-          </div>
+          <button value="sin(" onClick={handleBtnClick} className="special">
+            sin
+          </button>
+          <button value="cos(" onClick={handleBtnClick} className="special">
+            cos
+          </button>
+          <button value="tan(" onClick={handleBtnClick} className="special">
+            tan
+          </button>
+          <button value="log(" onClick={handleBtnClick} className="special">
+            log
+          </button>
+          <button value="π" onClick={handleBtnClick} className="special">
+            π
+          </button>
 
-          <div className="row">
-            <button value="7" onClick={handleBtnClick} className="number">
-              7
-            </button>
-            <button value="8" onClick={handleBtnClick} className="number">
-              8
-            </button>
-            <button value="9" onClick={handleBtnClick} className="number">
-              9
-            </button>
-            <button value="^" onClick={handleBtnClick} className="special">
-              ^
-            </button>
-            <button value="√(" onClick={handleBtnClick} className="special">
-              √
-            </button>
-          </div>
+          <button value="7" onClick={handleBtnClick} className="number">
+            7
+          </button>
+          <button value="8" onClick={handleBtnClick} className="number">
+            8
+          </button>
+          <button value="9" onClick={handleBtnClick} className="number">
+            9
+          </button>
+          <button value="^" onClick={handleBtnClick} className="special">
+            ^
+          </button>
+          <button value="√(" onClick={handleBtnClick} className="special">
+            √
+          </button>
 
-          <div className="row">
-            <button value="4" onClick={handleBtnClick} className="number">
-              4
-            </button>
-            <button value="5" onClick={handleBtnClick} className="number">
-              5
-            </button>
-            <button value="6" onClick={handleBtnClick} className="number">
-              6
-            </button>
-            <button value="×" onClick={handleBtnClick} className="special">
-              ×
-            </button>
-            <button value="÷" onClick={handleBtnClick} className="special">
-              ÷
-            </button>
-          </div>
+          <button value="4" onClick={handleBtnClick} className="number">
+            4
+          </button>
+          <button value="5" onClick={handleBtnClick} className="number">
+            5
+          </button>
+          <button value="6" onClick={handleBtnClick} className="number">
+            6
+          </button>
+          <button value="×" onClick={handleBtnClick} className="special">
+            ×
+          </button>
+          <button value="÷" onClick={handleBtnClick} className="special">
+            ÷
+          </button>
 
-          <div className="row">
-            <button value="1" onClick={handleBtnClick} className="number">
-              1
-            </button>
-            <button value="2" onClick={handleBtnClick} className="number">
-              2
-            </button>
-            <button value="3" onClick={handleBtnClick} className="number">
-              3
-            </button>
-            <button value="+" onClick={handleBtnClick} className="special">
-              +
-            </button>
-            <button value="-" onClick={handleBtnClick} className="special">
-              -
-            </button>
-          </div>
+          <button value="1" onClick={handleBtnClick} className="number">
+            1
+          </button>
+          <button value="2" onClick={handleBtnClick} className="number">
+            2
+          </button>
+          <button value="3" onClick={handleBtnClick} className="number">
+            3
+          </button>
+          <button value="+" onClick={handleBtnClick} className="special">
+            +
+          </button>
+          <button value="-" onClick={handleBtnClick} className="special">
+            -
+          </button>
 
-          <div className="row">
-            <button value="0" onClick={handleBtnClick} className="number">
-              0
-            </button>
-            <button value="." onClick={handleBtnClick} className="number">
-              .
-            </button>
-            <button
-              value="×10^"
-              onClick={handleBtnClick}
-              className="special"
-              id="exponent"
-            >
-              ×10^x
-            </button>
-            <button value="Ans" onClick={handleBtnClick} className="special">
-              Ans
-            </button>
-            <button onClick={calculate} className="high">
-              =
-            </button>
-          </div>
+          <button value="0" onClick={handleBtnClick} className="number">
+            0
+          </button>
+          <button value="." onClick={handleBtnClick} className="number">
+            .
+          </button>
+          <button
+            value="×10^"
+            onClick={handleBtnClick}
+            className="special"
+            id="exponent"
+          >
+            ×10^x
+          </button>
+          <button value="Ans" onClick={handleBtnClick} className="special">
+            Ans
+          </button>
+          <button onClick={calculate} className="high">
+            =
+          </button>
         </div>
       </div>
       <Calcmodal show={modalShow} onHide={() => setModalShow(false)} />

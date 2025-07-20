@@ -1,6 +1,6 @@
 .info {
-  font-size: 2.195dvw;
-  padding: 1.464dvh;
+  font-size: 2.195dvw; /* ≈ 30px */
+  padding: 1.464dvh; /* ≈ 9.94px */
   float: right;
   cursor: pointer;
 }
@@ -13,25 +13,55 @@
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
-  width: 30dvw !important;
-  min-height: 20dvh !important;
-  border: 0.0732dvw solid var(--dark-color);
-  border-radius: 0.585dvw;
+  min-width: 30dvw !important; /* ≈ 410px */
+  min-height: 20dvh !important; /* ≈ 136px */
+  border: 0.0732dvw solid var(--dark-color); /* ≈ 1px */
+  border-radius: 0.585dvw; /* ≈ 8px */
   background-color: var(--primary-color);
 }
 
-.display {
-  margin: 0.7326dvw;
+.extra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1dvh;
+  padding: 0 1.5dvw; 
   width: 100%;
-  height: 4.65dvh !important;
-  font-size: 1.61dvw;
+}
+
+.title {
+  color: var(--light-color);
+  font-family: var(--input-font);
+  padding: 0.5dvh;
+  cursor: pointer;
+}
+
+.link-up {
+  color: var(--light-color);
+  display: flex;
+  gap: 0.5dvh;
+  font-family: var(--input-font);
+  cursor:auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--light-color);
+  font-family: var(--logo-font);
+}
+
+.display {
+  margin: 0.7326dvw; /* ≈ 10px */
+  width: 100%;
+  height: 4.65dvh !important; /* ≈ 31.5px */
+  font-size: 1.61dvw; /* ≈ 22px */
   text-align: left;
-  padding: 1.4727dvh 1.464dvw;
+  padding: 1.4727dvh 1.464dvw; /* ≈ 10px 20px */
   border: none;
   box-sizing: border-box;
   background-color: var(--primary-color);
   color: var(--light-color);
-  letter-spacing: 0.055dvw;
+  letter-spacing: 0.055dvw; /* ≈ 0.75px */
   font-family: var(--input-font);
 }
 
@@ -41,62 +71,56 @@ input:focus {
 }
 
 .keypad {
-  margin-top: 2.21dvh;
-  margin-bottom: 2.21dvh;
+  padding: 1.5dvw;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 1.472dvh;
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.464dvw;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5dvh 1.5dvw;
+  justify-items: center;
 }
 
 #exponent {
-  font-size: 0.8416dvw;
+  font-size: 0.8416dvw; /* ≈ 11.5px */
 }
 
-button {
-  flex: 1;
-  min-width: 4.228dvw !important;
-  min-height: 8.506dvh !important;
+.keypad button {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   outline: none;
-  border-radius: 0.585dvw;
+  border-radius: 0.585dvw; 
   font-family: var(--button-font);
-  font-size: 1.171dvw;
+  font-size: 1.171dvw; 
   background-color: var(--secondary-color);
   color: var(--light-color);
   cursor: pointer;
   transition: var(--transition);
 }
 
-button:hover {
+.keypad button:hover {
   filter: brightness(90%);
   transform: scale(1.03);
 }
 
-button:active {
+.keypad button:active {
   filter: brightness(75%);
   transform: scale(0.97);
 }
 
-.number {
+.keypad button .number {
   background-color: var(--secondary-color);
   color: var(--light-color);
 }
 
-.special {
+.keypad .special {
   background-color: var(--tertiary-color);
   color: var(--light-color);
 }
 
-.high {
+.keypad .high {
   background-color: var(--accent-color);
   color: var(--light-color);
 }

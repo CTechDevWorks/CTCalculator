@@ -36,7 +36,7 @@ function Calcmodal(props) {
         </ul>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>X</Button>
+        <Button className="close" onClick={props.onHide}>X</Button>
       </Modal.Footer>
     </Modal>
   );

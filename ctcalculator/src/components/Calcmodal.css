@@ -52,6 +52,10 @@
 
 button.btn {
   background-color: var(--tertiary-color);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   font-size: 20px;
   color: var(--light-color);
