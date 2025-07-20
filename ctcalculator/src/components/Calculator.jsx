@@ -109,7 +109,7 @@ const Calculator = () => {
           <p className="link-up">
             Made by
             <Link target="blank" to={"https://github.com/CTechDevWorks"}>
-              <span>C</span>TDW_
+              CTDW_
             </Link>
           </p>
         </div>
