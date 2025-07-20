@@ -99,8 +99,8 @@ const Calculator = () => {
 
   return (
     <div className="no-bootstrap">
-      <div onClick={() => setModalShow(true)} className="info">
-        🧮
+      <div className="info">
+        <p onClick={() => setModalShow(true)} >🧮</p>
       </div>
       <div className="calculator">
         <input
@@ -210,7 +210,12 @@ const Calculator = () => {
             <button value="." onClick={handleBtnClick} className="number">
               .
             </button>
-            <button value="×10^" onClick={handleBtnClick} className="special">
+            <button
+              value="×10^"
+              onClick={handleBtnClick}
+              className="special"
+              id="exponent"
+            >
               ×10^x
             </button>
             <button value="Ans" onClick={handleBtnClick} className="special">
