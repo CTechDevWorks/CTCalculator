@@ -26,6 +26,7 @@
   align-items: center;
   margin-top: 1dvh;
   padding: 0 1.5dvw; 
+  font-size: 2.4dvh;
   width: 100%;
 }
 
@@ -123,4 +124,97 @@ input:focus {
 .keypad .high {
   background-color: var(--accent-color);
   color: var(--light-color);
+}
+
+/* Phone Responsivity */
+
+@media screen and (max-width: 479px) and (orientation: portrait) {
+  body {
+    background-image: url(../assets/portrait-phone.svg) ;
+    background-repeat: no-repeat;
+  }
+
+  .info {
+    font-size: 4.2dvw;
+  }
+
+  .display {
+    font-size: 4.5dvw;
+    padding: 2dvh 2.5dvw;
+  }
+
+  .extra {
+    font-size: 1.5dvh;
+  }
+
+  .keypad button {
+    font-size: 3.8dvw;
+  }
+}
+
+@media screen and (max-width: 926px) and (orientation: landscape) {
+  body {
+    background: url(../assets/landscape-phone.svg);
+  }
+
+  .info {
+    font-size: 3.2dvw;
+  }
+}
+
+/* */
+
+@media screen and (min-width: 481px) and (max-width: 1024px) and (orientation: portrait) {
+  body {
+    background-image: url(../assets/portrait-tablet.svg) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .info {
+    font-size: 3.2dvw;
+  }
+
+  .display {
+    font-size: 3.5dvw;
+    padding: 1.8dvh 2dvw;
+  }
+
+  .extra {
+    font-size: 1.5dvh;
+  }
+
+  .keypad button {
+    font-size: 2.9dvw;
+  }
+}
+
+@media screen and (min-width: 927px) and (max-width: 1280px) and (orientation: landscape) {
+  body {
+    background-image: url(../assets/landscape-tablet.svg);
+    background-size: cover;
+  }
+
+  .info {
+    font-size: 2.8dvw;
+  }
+
+  .display {
+    font-size: 3dvw;
+    padding: 1.5dvh 1.8dvw;
+  }
+
+  .extra {
+    font-size: 2.2dvh;
+  }
+
+  .keypad button {
+    font-size: 2.6dvw;
+  }
+}
+
+@media screen and (min-width: 1281px){
+  body{
+    background-image: url(../assets/blurry-gradient-haikei.svg);
+  }
 }
