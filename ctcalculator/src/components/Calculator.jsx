@@ -12,6 +12,7 @@ const Calculator = () => {
   const inputRef = useRef(null);
 
   useEffect(() => {
+    setModalShow(true)
     const keepFocus = () => inputRef.current?.focus();
 
     // Focus once on mount
