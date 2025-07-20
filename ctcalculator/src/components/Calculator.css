@@ -60,8 +60,8 @@ input:focus {
 
 button {
   flex: 1;
-  width: 57.7px;
-  height: 57.5px;
+  min-width: 57.75px;
+  min-height: 57.75px;
   border: none;
   outline: none;
   border-radius: 8px;

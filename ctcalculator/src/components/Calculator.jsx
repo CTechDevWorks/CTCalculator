@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { evaluate } from "mathjs";
+import Calcmodal from "./Calcmodal";
 import "./Calculator.css";
 
 const Calculator = () => {
@@ -95,8 +96,10 @@ const Calculator = () => {
   };
 
   return (
-    <div className="">
-      <div className="info">🧮</div>
+    <div className="no-bootstrap">
+      <div onClick={() => setModalShow(true)} className="info">
+        🧮
+      </div>
       <div className="calculator">
         <input
           type="text"
@@ -222,6 +225,7 @@ const Calculator = () => {
           </div>
         </div>
       </div>
+      <Calcmodal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 };
