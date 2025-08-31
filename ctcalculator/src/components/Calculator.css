@@ -49,6 +49,11 @@ a {
   text-decoration: none;
   color: var(--light-color);
   font-family: var(--logo-font);
+  transition: var(--transition);
+}
+
+a:hover{
+  color: var(--tertiary-color);
 }
 
 .display {
