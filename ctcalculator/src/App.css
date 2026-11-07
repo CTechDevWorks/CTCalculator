@@ -1,18 +1,106 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
-
+﻿/* Kadet AI design tokens (mirrors web/src/app/globals.css @theme) */
 :root {
-  --primary-color: #060a25;
-  --secondary-color: #262834;
-  --tertiary-color: #29a2b3;
-  --accent-color: #ffa104;
-  --light-color: #f5f5f5;
-  --dark-color: #191919;
+  --color-brand: #ed312d;
+  --color-brand-hover: #f04a47;
+  --color-brand-press: #c92824;
+  --color-brand-soft: #f58885;
 
-  --transition: all 0.3s cubic-bezier(0.23, 0.54, 0.6, 1.19);
+  --color-deep: #0f1d33;
+  --color-academy: #121f38;
+  --color-deck: #162844;
+  --color-deck-2: #1b3150;
+  --color-holo: #1a2744;
+  --color-hairline: #2a3d5c;
 
-  --button-font: "Open Sans", sans-serif;
-  --input-font: "TikTok Sans", sans-serif;
-  --logo-font: "Space Mono", sans-serif;
+  --color-ash: #ad9ca1;
+  --color-ash-muted: #8a7b80;
+  --color-classroom: #e8e4e6;
+  --color-chalk: #f5f5f5;
+
+  --color-abyss: #0b1629;
+  --color-abyss-raised: #0e1b31;
+
+  --height-touch-min: 2.75rem;
+
+  --duration-instant: 120ms;
+  --duration-fast: 200ms;
+  --duration-base: 320ms;
+  --ease-out-space: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --font-righteous: "Righteous";
+  --font-google-sans-flex: "Google Sans Flex";
+  --font-orbitron: "Orbitron";
+
+  --font-display: var(--font-righteous), system-ui, sans-serif;
+  --font-body: var(--font-google-sans-flex), system-ui, sans-serif;
+  --font-mission: var(--font-orbitron), ui-monospace, monospace;
+}
+
+/* Minimal preflight — the Next.js app gets this from Tailwind. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* The calculator owns the whole viewport — nothing else should scroll. */
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  font-size: 17px;
+}
+
+@media (orientation: portrait) and (pointer: coarse) and (min-width: 600px) {
+  html {
+    font-size: 20px; /* tablet portrait = enlarged phone */
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-classroom);
+  background: var(--color-abyss);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+input {
+  font: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h2,
+h3 {
+  font-size: inherit;
+  font-weight: inherit;
 }
